@@ -1,0 +1,51 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>REST Test Application</title>
+<link rel="stylesheet" href="bootstrap.min.css" />
+</head>
+<body>
+	<div class="center-block col-md-4" style="float: none;">
+		<form th:action="@{/}" method="post">
+			<h3>Get post by id</h3>
+			<div>
+				<label> Post Id : <input type="number" name="postid"
+					required="required" /></label> <input class="btn btn-md btn-primary"
+					type="submit" value="Get Post" />
+			</div>
+		</form>
+	</div>
+	<div class="row" style="margin: 20px;">
+		<div class="col-sm-12">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Posts</h3>
+				</div>
+				<div class="panel-body">
+					<table id="posts-table" class="table table-bordered">
+						<thead>
+							<tr class="btn-success">
+								<th>Post Id</th>
+								<th>User Id</th>
+								<th>Title</th>
+								<th>Body</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:if="${#lists.isEmpty(posts)}" class="btn-warning">
+								<td colspan="4" align="center">Posts table is empty</td>
+							</tr>
+							<tr th:each="post : ${posts}">
+								<td th:text="${post.id}"></td>
+								<td th:text="${post.userId}"></td>
+								<td th:text="${post.title}"></td>
+								<td th:text="${post.body}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

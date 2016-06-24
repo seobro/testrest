@@ -30,7 +30,7 @@ public class PostController {
 	 * Get post by Id and update Posts table
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.POST)
-	public String openPage(Model model, HttpServletRequest request) {
+	public String getPostById(Model model, HttpServletRequest request) {
 		String postId = request.getParameter("postid");
 		if (postId != null && !postId.isEmpty()) {
 			Post post = postService.getPostById(postId);
